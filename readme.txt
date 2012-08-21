@@ -3,7 +3,7 @@ Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,
 Requires at least: 3.0
 Tested up to: 3.4
 License: GPLv2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 
 WPJaipho extends native Wordpress image gallery with optimized support for iPhone and iPad users
 
