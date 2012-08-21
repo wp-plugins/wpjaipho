@@ -43,12 +43,12 @@ class Jph_Wp_MediaLibraryTemplate implements Jph_Wp_ITemplateApi
 		}
 		
 		
-		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wp-jaipho/jaipho/jaipho-0.55.00-preload-src.js'));
-		wp_enqueue_script( 'jaipho-main', plugins_url( 'wp-jaipho/jaipho/jaipho-0.55.00-main-src.js'));
-		wp_enqueue_style( 'jaipho-default', plugins_url( 'wp-jaipho/jaipho/Themes/Default/jaipho.css'));
+		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wpjaipho/jaipho/jaipho-0.55.00-preload-src.js'));
+		wp_enqueue_script( 'jaipho-main', plugins_url( 'wpjaipho/jaipho/jaipho-0.55.00-main-src.js'));
+		wp_enqueue_style( 'jaipho-default', plugins_url( 'wpjaipho/jaipho/Themes/Default/jaipho.css'));
 		
 		if ($this->isIpad())
-			wp_enqueue_style( 'jaipho-default-ipad', plugins_url( 'wp-jaipho/jaipho/Themes/Default/jaipho-ipad.css'));
+			wp_enqueue_style( 'jaipho-default-ipad', plugins_url( 'wpjaipho/jaipho/Themes/Default/jaipho-ipad.css'));
 		
 		
 	}
