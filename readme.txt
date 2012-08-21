@@ -34,6 +34,11 @@ You can test it with the iPhone or iPad User-Agent on articles which are using [
 
 == Changelog ==
 
+
+= 1.1.1 =
+
+* Bugfix - changed reference to plugin folder from wp-jaipho to wpjaipho
+
 = 1.1.0 =
 
 * Feature - WPJaipho is now using wp_head function. That means that the head information set by other plugins (like All in one SEO) will be preserved on gallery pages too.
