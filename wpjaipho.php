@@ -18,11 +18,10 @@ set_include_path(implode(PATH_SEPARATOR, array(
 require_once 'Xx/Log.php';
 
 define( 'XX_LOG_ENABLED', false);
-Xx_Log::createLog( realpath(ABSPATH.'/../').'/log/', 'jaipho', false);
+Xx_Log::createLog( realpath(ABSPATH.'/../').'/log/', 'jaipho', true);
 
 
 // ENABLE PLUGIN
-
 if (is_admin())
 {
 	require_once 'functions.php';
@@ -33,20 +32,30 @@ else
 {
 	require_once 'Pipho/DeviceInfo.php';
 	
-	if (Pipho_DeviceInfo::isSupported())  // tweak - not to load incldues if jaipho does not supports the visitor's user agent
+	if (Pipho_DeviceInfo::isSupported())  // tweak - not to load incldues if jaipho does not supports the visitor's user agent at all
 	{
 		require_once 'Jph/Wp/JaiphoPlugin.php';
 			
-		$wp_jaipho	=	Jph_Wp_JaiphoPlugin::createInstance();
+		$wp_jaipho	=	Jph_Wp_JaiphoPlugin::getInstance();
 		
-		if ($wp_jaipho->shouldActivateJaipho())
+		$enabled	=	$wp_jaipho->shouldActivateJaipho();
+		$enabled 	= 	apply_filters('jaipho_plugin_enabled_filter', $enabled);
+		
+		if ($enabled)
 		{
 			require_once 'functions.php';
 				
-			add_filter( 'template_include', 'jaiphp_template_include_filter');
+			add_filter( 'template_include', 'jaipho_template_include_filter');
+			
+			// NGG
+			if ($wp_jaipho->isNggEnabled())
+			{
+				add_filter( 'option_ngg_options', 'jaipho_ngg_fix_options_filter');
+			}
 		}
 	}
-
 }
 
+// thumbnails for Jaipho - used for media library galleries
+add_image_size( 'jaipho-thumbnail', 75, 75, true );
 

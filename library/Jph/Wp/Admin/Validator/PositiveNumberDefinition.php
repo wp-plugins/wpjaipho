@@ -2,7 +2,7 @@
 
 require_once 'Jph/Wp/Admin/Validator/IValidator.php';
 
-class Jph_Wp_Admin_Validator_OptionIntPositiveDefinition implements Jph_Wp_Admin_Validator_IValidator
+class Jph_Wp_Admin_Validator_PositiveNumberDefinition implements Jph_Wp_Admin_Validator_IValidator
 {
 	
 	/**
@@ -12,9 +12,9 @@ class Jph_Wp_Admin_Validator_OptionIntPositiveDefinition implements Jph_Wp_Admin
 	 */
 	public function validate( $value)
 	{
-		$message	=	'Value should be a positive integer';
+		$message	=	'Value should be a positive number';
 		
-		$valid		=	is_numeric( $value) && ((int)$value	== $value);
+		$valid		=	is_numeric( $value) && $value > 0;
 		
 		return new Jph_Wp_Admin_Validator_ValidatorResponse( $valid, $message);
 	}

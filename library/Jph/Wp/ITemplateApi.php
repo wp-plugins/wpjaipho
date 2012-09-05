@@ -25,11 +25,22 @@ interface Jph_Wp_ITemplateApi
 	public function getLoadingTitle();
 	
 	
+	/**
+	 * Used for generating page title (<head><title>...)
+	* @return string
+	*/
 	public function getPageTitle();
 	
-	public function getPostTitle();
+	public function getGalleryTitle();
 	
-	public function getPostPermalink();
+	
+	public function getSliderBackTitle();
+	
+	public function getSliderBackLink();
+	
+	public function getThumbsBackTitle();
+	
+	public function getThumbsBackLink();
 }
 
 
