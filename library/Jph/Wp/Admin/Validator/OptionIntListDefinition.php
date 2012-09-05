@@ -13,8 +13,15 @@ class Jph_Wp_Admin_Validator_OptionIntListDefinition implements Jph_Wp_Admin_Val
 	 */
 	public function validate( $value)
 	{
-		// TODO: impement the functionality
-		return new Jph_Wp_Admin_Validator_ValidatorResponse( true);
+		$values	=	split( ',', $value);
+		$ret	=	true;
+		foreach ($values as $item)
+		{
+			if (!is_numeric($item) || ((float)$item != $item))
+				$ret	=	false;
+		}
+		
+		return new Jph_Wp_Admin_Validator_ValidatorResponse( $ret, 'Use int values separated with a comma');
 	}
 	
 }
