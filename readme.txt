@@ -1,5 +1,5 @@
 === WPJaipho ===
-Contributors: secretja, nosf
+Contributors: tolecar, nosf, secretja
 Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile
 Requires at least: 3.0
 Tested up to: 3.4
@@ -29,11 +29,11 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 
 == Installation ==
 
-1) Download the plugin from Wordpress.org, and install the plugin.
+1. Download the plugin from Wordpress.org, and install the plugin.
 
-2) Activate WPJaipho after the installation.
+2. Activate WPJaipho after the installation.
 
-3) Optionally - visit Settings page for some modifications.
+3. Optionally - visit Settings page for some modifications.
 
 
 After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
