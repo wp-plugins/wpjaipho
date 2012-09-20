@@ -23,16 +23,14 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 
 * WPJaipho installation on <a href="http://www.viberfaq.com/viber-android-beta-version-review/" target="_blank">The Viber FAQ</a><br>
 * <a href="http://jaiphodemo.info/" target="_blank">Jaipho Demo</a><br>
-* <a href="http://jaipho.com/" target="_blank">Jaipho Gallery Official Website</a><br>
+* <a href="http://jaipho.com/wpjaipho" target="_blank">WPJaipho Home</a><br>
 
 
 
 == Installation ==
 
 1. Download the plugin from Wordpress.org, and install the plugin.
-
 2. Activate WPJaipho after the installation.
-
 3. Optionally - visit Settings page for some modifications.
 
 
