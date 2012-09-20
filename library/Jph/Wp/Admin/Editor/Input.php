@@ -4,7 +4,6 @@ require_once 'Jph/Wp/Admin/Editor/IEditor.php';
 
 class Jph_Wp_Admin_Editor_Input implements Jph_Wp_Admin_Editor_IEditor
 {
-	
 
 	public function printHtml( $name, $value)
 	{

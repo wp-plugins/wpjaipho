@@ -4,6 +4,12 @@ require_once 'Jph/Wp/Admin/Validator/IValidator.php';
 
 class Jph_Wp_Admin_Validator_OptionListDefinition implements Jph_Wp_Admin_Validator_IValidator
 {
+	private $options	=	array();
+	
+	public function __construct( $options)
+	{
+		$this->options	=	$options;
+	}
 	
 	/**
 	 * Example value: array ( 'thumbs', 'slider', 'slideshpw')
@@ -13,8 +19,10 @@ class Jph_Wp_Admin_Validator_OptionListDefinition implements Jph_Wp_Admin_Valida
 	 */
 	public function validate( $value)
 	{
-		// TODO: impement the functionality
-		return new Jph_Wp_Admin_Validator_ValidatorResponse( true);
+		$ret	=	false;
+		if (in_array( $value, $this->options))
+			$ret	=	true;
+		return new Jph_Wp_Admin_Validator_ValidatorResponse( $ret);
 	}
 	
 }
