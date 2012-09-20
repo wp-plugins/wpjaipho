@@ -4,7 +4,7 @@ Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,
 Requires at least: 3.0
 Tested up to: 3.4
 License: GPLv2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 
 WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for iPhone and iPad users
 
@@ -37,6 +37,10 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
+
+= v1.2.1 - 20.9.2012 =
+* Bugfix : suppressed eventual php warnings when calling realpath() function. Prior to this version, realpath() call could trigger php warning when the php safe_mode was on.
+
 
 = v1.2.0 - 4.9.2012 =
 * Feature : basic NextGEN Gallery support - [nggallery] shortcode and only "id" attribute are used
