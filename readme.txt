@@ -4,7 +4,7 @@ Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,
 Requires at least: 3.0
 Tested up to: 3.4
 License: GPLv2
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 
 WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for iPhone and iPad users
 
@@ -23,20 +23,29 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 
 * WPJaipho installation on <a href="http://www.viberfaq.com/viber-android-beta-version-review/" target="_blank">The Viber FAQ</a><br>
 * <a href="http://jaiphodemo.info/" target="_blank">Jaipho Demo</a><br>
-* <a href="http://jaipho.com/wpjaipho" target="_blank">WPJaipho Home</a><br>
+* <a href="http://jaipho.com/" target="_blank">Jaipho Gallery Official Website</a><br>
 
 
 
 == Installation ==
 
 1. Download the plugin from Wordpress.org, and install the plugin.
+
 2. Activate WPJaipho after the installation.
+
 3. Optionally - visit Settings page for some modifications.
 
 
 After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
+
+
+= v1.3.0 - 28.9.2012 =
+* Feature : Added posibility to disable displaying of image title and description throug admin options.
+* Bugfix : Two NextGEN galleries on a single page are now working OK. It was showing the last one.
+* Bugfix : Splashcreen duration admin option now can be set to 0. That way you can disable splashscreen completely.
+
 
 = v1.2.1 - 20.9.2012 =
 * Bugfix : suppressed eventual php warnings when calling realpath() function. Prior to this version, realpath() call could trigger php warning when the php safe_mode was on.

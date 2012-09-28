@@ -1,7 +1,7 @@
 <?php 
 /*
 Plugin Name: WPJaipho
-Version: 1.2.1
+Version: 1.3.0
 Plugin URI: http://www.jaipho.com
 Description: WPJaipho is a mobile image gallery plugin optimized for iPhone and iPad users. 
 Author: tole
@@ -17,7 +17,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
 // LOG
 require_once 'Xx/Log.php';
 
-define( 'XX_LOG_ENABLED', false);
+define( 'XX_LOG_ENABLED', true);
 Xx_Log::createLog( @realpath(ABSPATH.'/../').'/log/', 'jaipho', true);
 
 
