@@ -32,7 +32,7 @@
 </head>
 
 <body onload="init_jaipho()">
-	
+
 	<!-- 
 		Important! 
 		Do not remove elements with html attribute id set to some value. Those elements are required by javascript application.
@@ -76,12 +76,12 @@
 		<table cellpadding="0" cellspacing="0">
 		<tr>
 			<td class="wing">
-<!-- 				<a class="button" href="list.html"> -->
-<!-- 					Galleries  -->
-<!-- 				</a> -->
+				<a class="button" href="<?php echo $template->getThumbsBackLink() ?>">
+					<?php echo $template->getThumbsBackTitle() ?>
+				</a> 
 			</td>
 			<td class="center">
-				<?php echo $template->getPostTitle() ?>
+				<?php echo $template->getPageTitle() ?>
 			</td>
 			<td class="wing"></td>
 		</tr>
@@ -105,8 +105,8 @@
 			<table cellpadding="0" cellspacing="0" border="0">
 			<tr>
 				<td class="wing">
-					<a class="button" href="<?php echo $template->getPostPermalink() ?>">
-						<?php echo $template->getPostTitle() ?>
+					<a class="button" href="<?php echo $template->getSliderBackLink() ?>">
+						<?php echo $template->getSliderBackTitle() ?>
 					</a> 
 				</td>
 				<td class="center" id="navi-info">
