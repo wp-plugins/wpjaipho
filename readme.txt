@@ -42,7 +42,7 @@ After the activation, any page containing Gallery made on WP Media Library or Ne
 
 
 = v1.3.0 - 28.9.2012 =
-* Feature : Added posibility to disable displaying of image title and description throug admin options.
+* Feature : Added possibility to disable displaying of image title and description through admin options.
 * Bugfix : Two NextGEN galleries on a single page are now working OK. It was showing the last one.
 * Bugfix : Splashcreen duration admin option now can be set to 0. That way you can disable splashscreen completely.
 
