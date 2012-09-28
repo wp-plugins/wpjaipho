@@ -4,8 +4,11 @@ require_once 'Jph/Wp/AbstractTemplateApi.php';
 
 class Jph_Wp_NextGenGalleryTemplate extends Jph_Wp_AbstractTemplateApi
 {
-	protected $galleryId;
 	protected $galleryTitle;
+	
+	protected $galleryAttributes	=	array();
+	
+	
 	
 	public function __construct( Jph_Wp_JaiphoPlugin $plugin)
 	{
@@ -14,7 +17,7 @@ class Jph_Wp_NextGenGalleryTemplate extends Jph_Wp_AbstractTemplateApi
 	
 	public function nggGalleryShortcode( $attr)
 	{
-		$this->galleryId	=	$attr['id'];
+		$this->galleryAttributes	=	$attr;
 	}
 	
 	public function init()
@@ -39,16 +42,19 @@ class Jph_Wp_NextGenGalleryTemplate extends Jph_Wp_AbstractTemplateApi
 		}
 
 	    global $wpdb;
-	    $pid     = get_query_var('pid');
+	    $pid     		= 	get_query_var('pid');
+	    $gallery_id     = 	$this->_getGalleryIdFromPicture( $pid);
 	    
-	    $ngg_options = nggGallery::get_option('ngg_options');
+	    $ngg_options 	= 	nggGallery::get_option('ngg_options');
 	    
 	    //Set sort order value, if not used (upgrade issue)
 	    $ngg_options['galSort'] = ($ngg_options['galSort']) ? $ngg_options['galSort'] : 'pid';
 	    $ngg_options['galSortDir'] = ($ngg_options['galSortDir'] == 'DESC') ? 'DESC' : 'ASC';
 	    
+	    Xx_Log::logDebug( 'Fetching galleries ['.$gallery_id.']['.$pid.']');
+	    
 	    // get the pictures
-	    $picturelist = nggdb::get_gallery( $this->galleryId, $ngg_options['galSort'], $ngg_options['galSortDir']);
+	    $picturelist = nggdb::get_gallery( $gallery_id, $ngg_options['galSort'], $ngg_options['galSortDir']);
 	    
 		$i=0;
 		
@@ -62,10 +68,21 @@ class Jph_Wp_NextGenGalleryTemplate extends Jph_Wp_AbstractTemplateApi
 			$this->galleryTitle	=	$picture->title;
 			
 			$this->javascriptLoad	.=	"
-						dao.ReadImage( ".$i.",'".$picture->imageURL."','".$picture->thumbURL."','".addslashes( $picture->alttext)."','".addslashes( $picture->description)."');
+						dao.ReadImage( ".$i.",'".$picture->imageURL."','".$picture->thumbURL."','".
+							$this->getSlideTitle( $picture->alttext)."','".$this->getSlideDesciption( $picture->description)."');
 					";
 			$i++;
 		}
+	}
+	
+	private function _getGalleryIdFromPicture( $pid)
+	{
+		$image	=	nggdb::find_image( $pid);
+		
+		if ($image === false)
+			throw new Exception( 'Gallery for image ['.$pid.'] not found');
+		
+		return $image->galleryid;
 	}
 	
 	public function getGalleryTitle()

@@ -36,7 +36,7 @@ class Jph_Wp_MediaLibraryTemplate  extends Jph_Wp_AbstractTemplateApi
 			list($slide) = wp_get_attachment_image_src( $attachment->ID, 9999);
 			
 			$this->javascriptLoad	.=	"
-						dao.ReadImage( ".$i.",'".$slide."','".$thumb."','".addslashes( get_the_title( $attachment->ID))."','".addslashes( $attachment->post_content)."');
+						dao.ReadImage( ".$i.",'".$slide."','".$thumb."','".$this->getSlideTitle( get_the_title( $attachment->ID))."','".$this->getSlideDesciption( $attachment->post_content)."');
 					";
 			$i++;
 		}

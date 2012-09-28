@@ -44,6 +44,25 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
 		return $this->getPostTitle();
 	}
 	
+	protected function getSlideDesciption( $description)
+	{
+		if ($this->plugin->getOptionBoolValue( 'jaipho_disable_slide_title'))
+			return '';
+			
+		return addslashes( $description);
+	}
+	
+	protected function getSlideTitle( $title)
+	{
+		if ($this->plugin->getOptionBoolValue( 'jaipho_disable_slide_description'))
+			return '';
+		
+		return addslashes( $title);
+	}
+	
+	
+	
+	
 	/**
 	* Return should gallery be displayed to an iPad user.
 	* This method calcualetes in the possible admin wp options too.

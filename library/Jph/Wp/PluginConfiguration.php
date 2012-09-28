@@ -53,7 +53,7 @@ class Jph_Wp_PluginConfiguration
 				new Jph_Wp_JaiphoConfigurationOption( 'SPLASH_SCREEN_DURATION', 'Splash screen duration (seconds)', 'jaipho_js_splash_screen_duration', 1000,
 						'Minimum time that the splashcreen will be displayed',						
 						new Jph_Wp_Admin_Editor_Input(),
-						new Jph_Wp_Admin_Validator_PositiveNumberDefinition(),
+						new Jph_Wp_Admin_Validator_PositiveNumberDefinition( true),
 						new Jph_Wp_Admin_Adapter_MilisecondsToSecondsAdapter()),
 				
 				new Jph_Wp_JaiphoConfigurationOption( 
@@ -97,8 +97,16 @@ class Jph_Wp_PluginConfiguration
 				new Jph_Wp_ConfigurationOption( 'Disable NextGEN Gallery support', 'jaipho_disable_ngg', 0,
 						'Disables the WPJaipho when NextGEN gallery should be displayed',
 						new Jph_Wp_Admin_Editor_Checkbox( '1')),
+						
+				new Jph_Wp_ConfigurationOption( 'Disable slide title', 'jaipho_disable_slide_title', 0,
+						'Check this option not to show image titles',
+						new Jph_Wp_Admin_Editor_Checkbox( '1')),
+						
+				new Jph_Wp_ConfigurationOption( 'Disable slide description', 'jaipho_disable_slide_description', 0,
+						'Check this option not to show image descriptions',
+						new Jph_Wp_Admin_Editor_Checkbox( '1')),
 
-					));
+			));
 		
 		
 		// CONFIGURATION BLOCK
