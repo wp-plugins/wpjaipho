@@ -1,17 +1,17 @@
 === WPJaipho ===
 Contributors: tolecar, nosf, secretja
-Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile
+Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone
 Requires at least: 3.0
 Tested up to: 3.4
 License: GPLv2
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 
 WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for iPhone and iPad users
 
 == Description ==
 
 WPJaipho is plugin which adds mobile optimized look & feel to your WP based galleries.
-It is based on the original <a href="http://jaipho.com/" target="_blank">Jaipho</a>, iPhone optimized Javascript gallery and in current release works on iPhone and iPad devices (Android support will come latter).
+It is based on the original <a href="http://jaipho.com/" target="_blank">Jaipho</a>, iPhone optimized Javascript gallery and it works on iPhone, iPad and Android devices.
 
 = Supported WP galleries =
 WP Jaipho works with: <a href="http://wordpress.org/extend/plugins/nextgen-gallery/" target="_blank">NextGEN</a> Gallery and Default WP Gallery (via Media Library). It also works flawlessly with some mobile theme plugins such as <a href="http://wordpress.org/extend/plugins/wptouch/" target="_blank">WPTouch</a> and <a href="http://wordpress.org/extend/plugins/wordpress-mobile-pack/" target="_blank">WordPress Mobile Pack</a>.
@@ -39,10 +39,15 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
+= v1.4.0 - 31.10.2012 - Android support =
+* Feature : Support for Android users (before was limited to iOS only)
+* Feature : User agent matcher config option to trigger WPJaipho for other devices
+* Feature : Paste html code to splashscreen or thumbnails view through admin options
+* Feature : For developers: better integration with WordPress debugging facilities (WP_DEBUG and WP_DEBUG_LOG constants, debug.log file)
 
 
 = v1.3.0 - 28.9.2012 =
-* Feature : Added possibility to disable displaying of image title and description through admin options.
+* Feature : Added posibility to disable displaying of image title and description.
 * Bugfix : Two NextGEN galleries on a single page are now working OK. It was showing the last one.
 * Bugfix : Splashcreen duration admin option now can be set to 0. That way you can disable splashscreen completely.
 
