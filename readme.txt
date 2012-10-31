@@ -1,22 +1,23 @@
 === WPJaipho ===
-Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile
+Contributors: tolecar, nosf, secretja
+Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone
 Requires at least: 3.0
 Tested up to: 3.4
 License: GPLv2
-Stable tag: 1.1.1
+Stable tag: 1.3.0
 
-WPJaipho extends native Wordpress image gallery with optimized support for iPhone and iPad users
+WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for iPhone and iPad users
 
 == Description ==
 
-WpJaipho is a plugin which embeds Jaipho Javascript gallery into Wordpress. 
+WPJaipho is plugin which adds mobile optimized look & feel to your WP based galleries.
+It is based on the original <a href="http://jaipho.com/" target="_blank">Jaipho</a>, iPhone optimized Javascript gallery and it works on iPhone, iPad and Android devices.
 
-What does it do? 
-For iPhone and iPad users, it replaces the Wordpress native media library image gallery (shortcode [gallery]) with Jaipho gallery template. Jaipho itself is an iPhone and iPad optimized javascript image gallery and it tends to look and behave like an native application. More info about Jaipho can be found at <a href="http://jaipho.com/" target="_blank">jaipho.com</a>
+= Supported WP galleries =
+WP Jaipho works with: <a href="http://wordpress.org/extend/plugins/nextgen-gallery/" target="_blank">NextGEN</a> Gallery and Default WP Gallery (via Media Library). It also works flawlessly with some mobile theme plugins such as <a href="http://wordpress.org/extend/plugins/wptouch/" target="_blank">WPTouch</a> and <a href="http://wordpress.org/extend/plugins/wordpress-mobile-pack/" target="_blank">WordPress Mobile Pack</a>.
 
-WPJaipho is tested with <a href="http://wordpress.org/extend/plugins/wptouch/" target="_blank">WPTouch</a> and <a href="http://wordpress.org/extend/plugins/wordpress-mobile-pack/" target="_blank">WordPress Mobile Pack</a> and it was OK.
-
-
+= How Does it Work? =
+Simple enough - just activate the plugin, and all your galleries are automatically transformed into mobile optimized gallery, which is visible for mobile users only. Check out demo <a href="http://www.viberfaq.com/viber-android-beta-version-review/" target="_blank">here</a> with your iPhone.
 
 = Further Resources =
 
@@ -28,25 +29,50 @@ WPJaipho is tested with <a href="http://wordpress.org/extend/plugins/wptouch/" t
 
 == Installation ==
 
-Just download, install, and activate the WPJaipho plugin. 
-You can test it with the iPhone or iPad User-Agent on articles which are using [gallery] shortcode.
+1. Download the plugin from Wordpress.org, and install the plugin.
 
+2. Activate WPJaipho after the installation.
+
+3. Optionally - visit Settings page for some modifications.
+
+
+After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
-
-= 1.1.1 =
-
-* Bugfix - changed reference to plugin folder from wp-jaipho to wpjaipho
-
-
-= 1.1.0 =
-
-* Feature - WPJaipho is now using wp_head function. That means that the head information set by other plugins (like All in one SEO) will be preserved on gallery pages too.
+= v1.4.0 - 30.10.2012 - Android support =
+* Feature : Support for Android users (before was limited to iOS only)
+* Feature : User agent matcher config option to trigger WPJaipho for other devices
+* Feature : Paste html code to splashscreen or thumbnails view through admin options
+* Feature : For developers: better integration with WordPress debugging facilities (WP_DEBUG and WP_DEBUG_LOG constants, debug.log file)
 
 
-= 1.0.0 =
+= v1.3.0 - 28.9.2012 =
+* Feature : Added posibility to disable displaying of image title and description.
+* Bugfix : Two NextGEN galleries on a single page are now working OK. It was showing the last one.
+* Bugfix : Splashcreen duration admin option now can be set to 0. That way you can disable splashscreen completely.
 
-* Feature - Works with Wordpress native gallery (shortcode [gallery])
-* Feature - Settings page with configuration options
+
+= v1.2.1 - 20.9.2012 =
+* Bugfix : suppressed eventual php warnings when calling realpath() function. Prior to this version, realpath() call could trigger php warning when the php safe_mode was on.
+
+
+= v1.2.0 - 4.9.2012 =
+* Feature : basic NextGEN Gallery support - [nggallery] shortcode and only "id" attribute are used
+* Feature : thumbnails view support
+* Feature : new settings options for chosing Jaipho theme
+* Feature : added hooks for extending WPJaipho - jaipho_theme_folder_filter, jaipho_template_api_handler_filter, jaipho_plugin_enabled_filter, jaipho_template_file_filter
+
+
+= v1.1.1 =
+* Bugfix : changed reference to plugin folder from wp-jaipho to wpjaipho
+
+
+= v1.1.0 =
+* Feature : WPJaipho is now using wp_head function. That means that the head information set by other plugins (like All in one SEO) will be preserved on gallery pages too.
+
+
+= v1.0.0 =
+* Feature : Works with Wordpress native gallery (shortcode [gallery])
+* Feature : Settings page with configuration options
 
 -------------

@@ -14,7 +14,7 @@ class Jph_Wp_Admin_Validator_OptionIntPositiveDefinition implements Jph_Wp_Admin
 	{
 		$message	=	'Value should be a positive integer';
 		
-		$valid		=	is_numeric( $value) && (int)$value	>= 0;
+		$valid		=	is_numeric( $value) && ((int)$value	== $value);
 		
 		return new Jph_Wp_Admin_Validator_ValidatorResponse( $valid, $message);
 	}

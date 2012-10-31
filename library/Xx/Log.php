@@ -1,32 +1,12 @@
 <?PHP
 
+require_once 'Xx/DefaultLogWriter.php';
+require_once 'Xx/SplitLogWriter.php';
+
 class Xx_Log
 {
 	protected static $_instance;
 	
-	public $mPrefix;
-	public $mPath;
-	public $mUseSession	=	true;
-	
-	private function __construct( $path, $prefix, $useSession)
-	{
-		$this->mPath		=	$path;
-		$this->mPrefix		=	$prefix;
-		$this->mUseSession	=	$useSession;
-	}
-	
-	
-	private function init()
-	{
-		if (!is_dir( $this->mPath))
-		{
-			if (false === mkdir( $this->mPath))
-				throw new Exception( 'Log folder ['.$this->mPath.'] could not be created. Please creeate it manualy or make the parent folder writable by php');
-		}
-		
-// 		if (is_writable( $this->mPath))
-// 			throw new Exception( 'Log folder ['.$this->mPath.'] is not writable. Please change file permissions on that folder');
-	}
 	
 	/**
 	 * Enter description here...
@@ -41,13 +21,28 @@ class Xx_Log
 		if (!XX_LOG_ENABLED)
 			return;
 			
-		self::$_instance	=	new Xx_Log( $path, $prefix, $useSession);		
+		self::$_instance	=	new Xx_SplitLogWriter( $path, $prefix, $useSession);		
 		self::$_instance->Init();
 		
-		self::$_instance->logDebug( '============================================================');
-		self::$_instance->logDebug( $_SERVER['REQUEST_URI']);
-		self::$_instance->logDebug( $_SERVER['HTTP_USER_AGENT']);
-		self::$_instance->logDebug( '============================================================');
+		self::logDebug( '============================================================');
+		self::logDebug( $_SERVER['REQUEST_URI']);
+		self::logDebug( $_SERVER['HTTP_USER_AGENT']);
+		self::logDebug( '============================================================');
+		
+		return self::$_instance;
+	}
+	public static function createDefaultLog( $useSession=false)
+	{
+		if (!XX_LOG_ENABLED)
+			return;
+			
+		self::$_instance	=	new Xx_DefaultLogWriter( $useSession);		
+		self::$_instance->Init();
+		
+		self::logDebug( '============================================================');
+		self::logDebug( $_SERVER['REQUEST_URI']);
+		self::logDebug( $_SERVER['HTTP_USER_AGENT']);
+		self::logDebug( '============================================================');
 		
 		return self::$_instance;
 	}
@@ -63,11 +58,7 @@ class Xx_Log
 		if (isset(self::$_instance))
 			return self::$_instance;
 			
-		self::$_instance	=	new Xx_Log( '', 'fallback');	
-		self::$_instance->Init();
-		self::$_instance->logDebug('Starting fallback log');
-		
-		return self::$_instance;
+		throw new Exception( 'Log not created. Try to use first createLog() method');
 	}
 	
 	// LOGING	
@@ -113,27 +104,6 @@ class Xx_Log
 	}
 	
 
-	private function log( $type, $str)
-	{
-		$baktrace	=	debug_backtrace();
-		$trace		=	@$baktrace[1];
-		
-		if (@trim($baktrace[2]['class']))
-		{
-			$info	=	'['.@$baktrace[2]['class'].':'.@$baktrace[2]['function'].'('.@$baktrace[1]['line'].")]\t";
-		}
-		else {
-			$info	=	'['.$trace['file'].' '."(" .$trace['line'] .")]\t";	
-		}
-		
-		$str1 	= 	$this->_getInfo( $type, $info);
-		
-		$str1	.=	' '.str_replace("\r\n", "\r\n\t", $str) . "\r\n";
-		
-
-		error_log( $str1, 3, $this->_getFilename( $this->mPath, $this->mPrefix));	
-	}
-	
 	protected static function _formatError( Exception $error)
 	{
 		if ($error instanceof Exception)
@@ -147,27 +117,6 @@ class Xx_Log
 		}
 		return $str;
 	}
-	
-	protected static function _getFilename( $path='', $root='')
-	{
-		$name	=	$path.$root.'_'.date('Y-m-d').'.log';
-		return $name;
-	}		
-
-	
-	protected function _getInfo( $type, $info)
-	{
-		$time 	= 	microtime();
-		$date	=	date( 'H:i:s').':'.substr( $time, 2, 3);
-		
-		if ($this->mUseSession)
-			$str 	= 	$date . " " . $type. "\t{"  . session_id(). "}\t" . $info;
-		else 
-			$str 	= 	$date . " " . $type. "\t" . $info;
-		
-		return $str;
-	}
-	
 
 }
 
