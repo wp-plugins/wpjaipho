@@ -1,9 +1,9 @@
 <?php 
 /*
 Plugin Name: WPJaipho
-Version: 1.3.0
+Version: 1.4.0
 Plugin URI: http://www.jaipho.com
-Description: WPJaipho is a mobile image gallery plugin optimized for iPhone and iPad users. 
+Description: WPJaipho is a mobile image gallery plugin optimized for iPhone, iPad and Android users. 
 Author: tole
 */
 
@@ -17,8 +17,11 @@ set_include_path(implode(PATH_SEPARATOR, array(
 // LOG
 require_once 'Xx/Log.php';
 
-define( 'XX_LOG_ENABLED', true);
-Xx_Log::createLog( @realpath(ABSPATH.'/../').'/log/', 'jaipho', true);
+define( 'XX_DEBUG_ENABLED', WP_DEBUG);
+define( 'XX_LOG_ENABLED', WP_DEBUG && WP_DEBUG_LOG);
+Xx_Log::createDefaultLog();
+// Xx_Log::createLog( @realpath(ABSPATH.'/../').'/log/', 'jaipho', true);
+
 
 
 // ENABLE PLUGIN
@@ -30,28 +33,23 @@ if (is_admin())
 }
 else
 {
-	require_once 'Pipho/DeviceInfo.php';
+	require_once 'Jph/Wp/JaiphoPlugin.php';
+		
+	$wpjaipho	=	Jph_Wp_JaiphoPlugin::getInstance();
 	
-	if (Pipho_DeviceInfo::isSupported())  // tweak - not to load incldues if jaipho does not supports the visitor's user agent at all
+	$enabled	=	$wpjaipho->shouldActivateJaipho();
+	$enabled 	= 	apply_filters('jaipho_plugin_enabled_filter', $enabled);
+	
+	if ($enabled)
 	{
-		require_once 'Jph/Wp/JaiphoPlugin.php';
+		require_once 'functions.php';
 			
-		$wp_jaipho	=	Jph_Wp_JaiphoPlugin::getInstance();
+		add_filter( 'template_include', 'jaipho_template_include_filter');
 		
-		$enabled	=	$wp_jaipho->shouldActivateJaipho();
-		$enabled 	= 	apply_filters('jaipho_plugin_enabled_filter', $enabled);
-		
-		if ($enabled)
+		// NGG
+		if ($wpjaipho->isNggEnabled())
 		{
-			require_once 'functions.php';
-				
-			add_filter( 'template_include', 'jaipho_template_include_filter');
-			
-			// NGG
-			if ($wp_jaipho->isNggEnabled())
-			{
-				add_filter( 'option_ngg_options', 'jaipho_ngg_fix_options_filter');
-			}
+			add_filter( 'option_ngg_options', 'jaipho_ngg_fix_options_filter');
 		}
 	}
 }
