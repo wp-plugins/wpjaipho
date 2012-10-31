@@ -19,9 +19,9 @@ function jaipho_settings_page()
 	require_once 'Jph/Wp/JaiphoPlugin.php';
 	require_once 'Jph/Wp/Admin/OptionsPage.php';
 	
-	$wp_jaipho	=	Jph_Wp_JaiphoPlugin::getInstance();
+	$wpjaipho	=	Jph_Wp_JaiphoPlugin::getInstance();
 	
-	$page		=	new Jph_Wp_Admin_OptionsPage( $wp_jaipho->configuration);
+	$page		=	new Jph_Wp_Admin_OptionsPage( $wpjaipho->configuration);
 	$page->init();
 
 	$page->printHtml();
@@ -32,9 +32,9 @@ function jaipho_settings_page()
 
 function jaipho_template_include_filter( $template)
 {
-	$wp_jaipho	=	Jph_Wp_JaiphoPlugin::getInstance();
+	$wpjaipho	=	Jph_Wp_JaiphoPlugin::getInstance();
 	
-	if(jaipho_is_wp_gallery_call() || (jaipho_is_ngg_call() && $wp_jaipho->isNggEnabled()))
+	if(jaipho_is_wp_gallery_call() || (jaipho_is_ngg_call() && $wpjaipho->isNggEnabled()))
 	{
  		if (jaipho_is_ngg_call())
 			add_filter( 'jaipho_template_api_handler_filter', 'jaipho_ngg_set_template_handler_filter');
