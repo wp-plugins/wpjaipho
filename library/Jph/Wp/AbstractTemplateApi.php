@@ -30,12 +30,9 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
  		$theme_folder 	= 	apply_filters('jaipho_theme_folder_filter', $theme_folder);
 		
 		// JS & CSS
-		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wpjaipho/jaipho/jaipho-0.55.00-preload-src.js'));
-		wp_enqueue_script( 'jaipho-main', plugins_url( 'wpjaipho/jaipho/jaipho-0.55.00-main-src.js'));
+		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wpjaipho/jaipho/jaipho-0.60.00.js'));
 		wp_enqueue_style( 'jaipho-default', $theme_folder.'/jaipho.css');
 		
-		if ($this->isIpad())
-			wp_enqueue_style( 'jaipho-default-ipad', $theme_folder.'/jaipho-ipad.css');
 	}
 	
 	
@@ -61,17 +58,6 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
 	}
 	
 	
-	
-	
-	/**
-	* Return should gallery be displayed to an iPad user.
-	* This method calcualetes in the possible admin wp options too.
-	* @return boolean
-	*/
-	public function isIpad()
-	{
-		return Pipho_DeviceInfo::isIpad() && !$this->plugin->getOptionValue( 'jaipho_disable_ipad');
-	}
 	
 	
 	/**
@@ -108,6 +94,21 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
 		return $this->plugin->getOptionValue( 'jaipho_loading_title');
 	}
 	
+	public function getSplashscreenHtml()
+	{
+		return stripslashes( $this->plugin->getOptionValue( 'jaipho_splashscreen_html'));
+	}
+	
+	public function getThumbnailsHtml()
+	{
+		return stripslashes( $this->plugin->getOptionValue( 'jaipho_thumbnails_html'));
+	}
+	
+	public function getLoadingImage()
+	{
+		return $this->plugin->getOptionValue( 'jaipho_loading_title');
+	}
+	
 	
 	public function getGalleryTitle()
 	{
@@ -137,7 +138,7 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
 	public function getSliderBackLink()
 	{
 		if ($this->plugin->getOptionBoolValue('jaipho_enable_thumbnails'))
-			return 'javascript: app.ShowThumbsAction();';
+			return 'javascript: jaipho.ShowThumbsAction();';
 		return $this->getPostPermalink();
 	}
 	

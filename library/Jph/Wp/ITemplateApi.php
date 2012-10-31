@@ -4,13 +4,6 @@
 interface Jph_Wp_ITemplateApi
 {
 	
-	/**
-	* Return should gallery be displayed to an iPad user.
-	* This method calcualetes in the possible admin wp options too.
-	* @return boolean
-	*/
-	public function isIpad();
-	
 	
 	/**
 	* Dumps the Jaipho javascript configuration block. Further info about Jaipho configuration http://www.jaipho.com/content/jaipho-configuration
@@ -24,6 +17,11 @@ interface Jph_Wp_ITemplateApi
 	
 	public function getLoadingTitle();
 	
+	public function getLoadingImage();
+	
+	public function getSplashscreenHtml();
+	
+	public function getThumbnailsHtml();
 	
 	/**
 	 * Used for generating page title (<head><title>...)

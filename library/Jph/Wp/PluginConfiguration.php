@@ -9,6 +9,7 @@ require_once 'Jph/Wp/Admin/Adapter/MilisecondsToSecondsAdapter.php';
 require_once 'Jph/Wp/Admin/Editor/Input.php';
 require_once 'Jph/Wp/Admin/Editor/Select.php';
 require_once 'Jph/Wp/Admin/Editor/Checkbox.php';
+require_once 'Jph/Wp/Admin/Editor/Textarea.php';
 
 require_once 'Jph/Wp/Admin/Validator/OptionCssTimeDefinition.php';
 require_once 'Jph/Wp/Admin/Validator/OptionIntListDefinition.php';
@@ -93,6 +94,10 @@ class Jph_Wp_PluginConfiguration
 				new Jph_Wp_ConfigurationOption( 'Disable iPad support', 'jaipho_disable_ipad', 0,
 						'Disables the WPJaipho for iPad users.',
 						new Jph_Wp_Admin_Editor_Checkbox( '1')),
+				
+				new Jph_Wp_ConfigurationOption( 'Disable Android support', 'jaipho_disable_android', 0,
+						'Disables the WPJaipho for Android users.',
+						new Jph_Wp_Admin_Editor_Checkbox( '1')),
 		
 				new Jph_Wp_ConfigurationOption( 'Disable NextGEN Gallery support', 'jaipho_disable_ngg', 0,
 						'Disables the WPJaipho when NextGEN gallery should be displayed',
@@ -105,6 +110,18 @@ class Jph_Wp_PluginConfiguration
 				new Jph_Wp_ConfigurationOption( 'Disable slide description', 'jaipho_disable_slide_description', 0,
 						'Check this option not to show image descriptions',
 						new Jph_Wp_Admin_Editor_Checkbox( '1')),
+						
+				new Jph_Wp_ConfigurationOption( 'Custom user-agents', 'jaipho_custom_user_agents', '',
+						'List of user agents which will be considered as supported and the WPJaipho gallery will be presented to those users.',
+						new Jph_Wp_Admin_Editor_Input( 60)),
+						
+				new Jph_Wp_ConfigurationOption( 'Splashscreen html', 'jaipho_splashscreen_html', '',
+						'Here you can put advertisement, tracking or whatever html you want to. It will be presented while splashscreen is on.',
+						new Jph_Wp_Admin_Editor_Textarea()),
+						
+				new Jph_Wp_ConfigurationOption( 'Thumbnails html', 'jaipho_thumbnails_html', '',
+						'Here you can put advertisement, tracking or whatever html you want to. It will be presented on thumbnails view. Remember to check the "Enable thumbnails view" option',
+						new Jph_Wp_Admin_Editor_Textarea()),
 
 			));
 		

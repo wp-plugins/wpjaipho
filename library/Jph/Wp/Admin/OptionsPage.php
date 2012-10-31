@@ -77,7 +77,7 @@ class Jph_Wp_Admin_OptionsPage
 	{
 		if ($this->isSubmited() && !$this->saved)
 		{
-			return @$_POST[ $this->getFormName($optionName)];
+			return stripslashes( @$_POST[ $this->getFormName($optionName)]);
 		}
 	
 		$option		=	$this->configuration->getOption( $optionName);

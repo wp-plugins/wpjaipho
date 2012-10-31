@@ -70,10 +70,28 @@ class Jph_Wp_JaiphoPlugin
 	*/
 	public function shouldActivateJaipho()
 	{
+		$user_agents	=	$this->getOptionValue( 'jaipho_custom_user_agents');
+
+		if ($user_agents)
+		{
+			$subject		=	$_SERVER['HTTP_USER_AGENT'];
+			$user_agents	=	split( ',', $user_agents);
+			foreach ( $user_agents as $user_agent)
+			{
+				if (stristr( $subject, trim( $user_agent)))
+					return true;
+			}
+		}
+		
+		
+		
 		if (!Pipho_DeviceInfo::isSupported())
 			return false;
 		
 		if (Pipho_DeviceInfo::isIpad() && $this->getOptionValue( 'jaipho_disable_ipad'))
+			return false;
+		
+		if (Pipho_DeviceInfo::isAndroid() && $this->getOptionValue( 'jaipho_disable_android'))
 			return false;
 		
 		return true;
