@@ -39,6 +39,11 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
+
+= v1.4.1 - 3.11.2012 - selection fix =
+* Bugfix : Fixed not working direct slide selection
+
+ 
 = v1.4.0 - 31.10.2012 - Android support =
 * Feature : Support for Android users (before was limited to iOS only)
 * Feature : User agent matcher config option to trigger WPJaipho for other devices

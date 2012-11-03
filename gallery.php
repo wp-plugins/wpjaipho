@@ -183,6 +183,9 @@
 			jaipho	=	new Jph_Application( dao);
 			jaipho.Init();
 			jaipho.Run();
+
+			// wpjaipho selection
+			jaipho.mrSlider.mrSlidesComponent.SelectSlide( <?php echo $template->getSelectedIndex() ?>);
 		}
 		
 	</script>
