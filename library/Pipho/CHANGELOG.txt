@@ -1,0 +1,64 @@
+v 1.03.00 android support
+2012.10.25
+
+- deployed with Jaipho 0.60
+- android browsers are considered as supported now
+
+
+
+
+-----------------------------------------------------
+v 1.02.01 jaipho 0.55 catch up
+2011.09.15
+
+- in Pipho_FileManager added missing require_once statement for including ItemNotExistsException source
+
+- deployed with Jaipho 0.55 
+
+
+
+
+-----------------------------------------------------
+v 1.02.00 iPad support
+2010.09.01
+
+- iPad support in Pipho_DeviceInfo by giving the right screen size for iPad and through isIpad() method
+- distributed with list.php which displays all image galleries list
+- new constant PIPHO_PHOTOS_FOLDER_DESTINATION enables to feature to have the source images on other location on disc drive
+- new constant PIPHO_JAIPHO_THEME to select one from two available themes: Default and iUI
+- as now there are two templates, configuration is extracted to two config files: _config_pipho.php and _config_jaipho.php
+- bugfix in Pipho_FileManager::_createImage() which enables pipho to work with PHP 5.2 and lower (thanks to arsen)
+
+- deployed with Jaipho 0.54
+
+
+
+
+-----------------------------------------------------
+v 1.01.01 jaipho 0.52.3 catch up
+2009.10.06
+
+Fixes:
+	Images sort order is used also when determining the first gallery image - for get galleries list method.
+	When dumping Jaipho read images javascript lines, image title and description is escaped.
+
+Misc:
+	Updated to latest Jaipho - 0.52.3     	
+
+
+
+
+-----------------------------------------------------
+v 1.01.00 
+2009.08.09
+
+New features:
+	Turn on/off resizing images used in slider (fullscreen) mode.
+	Addedd posibility to sort galleries and images through set of new constants.
+	When there is no gallery description file, gallery title is set as folder name (Untitled in previous version)
+	Now you can get Gallery object preloaded with first image in gallery - Pipho_FileManager getGalleries()
+	
+Misc:
+	More descriptive exception messages
+	Distributed with jaipho 0.52.1
+

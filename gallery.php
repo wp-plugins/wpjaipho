@@ -9,15 +9,16 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 	
 	<title><?php echo $template->getPageTitle() ?></title>
 
 	<!-- 
-		JAIPHO BETA version 0.55.00 - iPhone optimized javascript gallery
+		JAIPHO BETA version 0.60.01 - iPhone optimized javascript gallery
 		Check on http://www.jaipho.com/ for latest news and source updates 
 	 -->
-	
+	 
 		<?php wp_head() ?>
 		
 	<script type="text/javascript">
@@ -28,7 +29,7 @@
 			JphUtil_Console.CreateConsole( DEBUG_LEVELS);
 		
 	</script>	
-
+	
 </head>
 
 <body onload="init_jaipho()">
@@ -40,6 +41,9 @@
 	 -->
 	
 	<!-- SPLASH SCREEN -->
+	<!-- 
+		Splash screen actually is not part of the Jaipho library. It is only part of a template.
+	-->
 	<table id="splash-screen" class="splash-screen">
 	<tr>
 		<td class="text">
@@ -48,26 +52,62 @@
 	</tr>
 	<tr>
 		<td class="image">
+		<?php echo $template->getSplashscreenHtml() ?>
 		&nbsp;
 		</td>
 	</tr>
 	</table>
 	
-	<script type="text/javascript">
-	
-		// SPLASH SCREEN INIT	
-		scrollTo(0,1);
-		<?php if ( $template->isIpad()): ?>
-		var or_mngr	=	new JphUtil_OrientationManager( 768, 1024);
-		<?php else: ?>
-		var or_mngr	=	new JphUtil_OrientationManager( 320, 480);
-		<?php endif; ?>
-		or_mngr.Init();
+    <script type="text/javascript">
 
-	</script>
+    function is_iphone_safari()
+    {
+    	var iphone	=	navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i);
+    	var safari	=	navigator.userAgent.match(/Safari/i);
+    	var chrome	=	navigator.userAgent.match(/CriOS/i);
+    	
+    	if(iphone && safari && !chrome)
+    		return true;
+    	return false;
+    };
+    
+    // iPhone fix to force full screen height even when there is not enough content on page
+	function iphone_enforce_height()
+	{
+		var start	=	window.innerHeight;	
+		var max		=	start * 2;
+		document.body.style.height	= max + 'px';
+
+		// enlarge to fit screen
+		window.scrollTo(0,0); 
+		document.body.style.height	= window.innerHeight + 'px';
+	}
+	
+    </script>
+    
+    <script type="text/javascript">
+
+    if (is_iphone_safari())
+		iphone_enforce_height();
+    else
+		document.body.style.height	= document.documentElement.clientHeight + 'px'
+    
+	function init_jaipho()
+	{
+		var splash	=	document.getElementById( 'splash-screen');
+		if (SPLASH_SCREEN_DURATION > 0)
+			splash.style.display	=	'table';
+		
+		setTimeout('_init_jaipho()', SPLASH_SCREEN_DURATION);
+	}
+    
+    </script>
+	<!-- SPLASH SCREEN - END -->
+	
+	
 	
 	<!-- JAIPHO PRELOAD IMAGES -->
-	<div id="preloader">
+	<div id="css-preloader">
 	</div>
 		
 	<!-- THUMBNAILS -->
@@ -76,12 +116,12 @@
 		<table cellpadding="0" cellspacing="0">
 		<tr>
 			<td class="wing">
-<!-- 				<a class="button" href="list.html"> -->
-<!-- 					Galleries  -->
-<!-- 				</a> -->
+				<a class="button" href="<?php echo $template->getThumbsBackLink() ?>">
+					<?php echo $template->getThumbsBackTitle() ?>
+				</a> 
 			</td>
 			<td class="center">
-				<?php echo $template->getPostTitle() ?>
+				<?php echo $template->getPageTitle() ?>
 			</td>
 			<td class="wing"></td>
 		</tr>
@@ -90,7 +130,9 @@
 	</div>
 	
     <div id="thumbs-container">
-		<div id="thumbs-images-container">
+    	<?php echo $template->getThumbnailsHtml() ?>
+    	
+    	<div id="thumbs-images-container">
 		</div>	
 		<div id="thumbs-count-text">
 		</div>
@@ -98,15 +140,15 @@
 
 	
 	<!-- SLIDER -->
-	<div id="slider-overlay">
-		
+
+    <div id="slider-container">
+
 		<div class="toolbar" id="slider-toolbar-top">
-			
 			<table cellpadding="0" cellspacing="0" border="0">
 			<tr>
 				<td class="wing">
-					<a class="button" href="<?php echo $template->getPostPermalink() ?>">
-						<?php echo $template->getPostTitle() ?>
+					<a class="button" href="<?php echo $template->getSliderBackLink() ?>">
+						<?php echo $template->getSliderBackTitle() ?>
 					</a> 
 				</td>
 				<td class="center" id="navi-info">
@@ -115,7 +157,7 @@
 			</tr>
 			</table>
 		</div>
-
+	
 		<div class="toolbar" id="slider-toolbar-bottom">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 			<tr>
@@ -136,12 +178,9 @@
 			</tr>
 			</table>
 		</div>
-	</div>
-	
-    <div id="slider-container">
     </div>
+    
 
-			
 	<script type="text/javascript">
 
 		// APPLICATION INIT BLOCK 
@@ -150,39 +189,26 @@
 		 // load images
 		var dao	=	new Jph_Dao();
 
-		
 		<?php echo $template->getJavascriptLoad(); ?>
 
-	
-		// global reference to jaipho application
-		var app;
-		var splash	=	document.getElementById( 'splash-screen');
-		function init_jaipho()
-		{
-			if (SPLASH_SCREEN_DURATION > 0)
-				splash.style.display	=	'table';
-			
-			setTimeout('_init_jaipho()', SPLASH_SCREEN_DURATION);
-		}
+		var jaipho;
 		
 		function _init_jaipho()
 		{
 			// remove splash screen
+			var splash	=	document.getElementById( 'splash-screen');
 			splash.style.display	=	'none';
-			
+
 			// start jaipho
-			app	=	new Jph_Application( dao, or_mngr, splash);
-			app.Init();
-			app.Run();
+			jaipho	=	new Jph_Application( dao);
+			jaipho.Init();
+			jaipho.Run();
 
 			// wpjaipho selection
-			app.mrSlider.SelectSlide( <?php echo $template->getSelectedIndex() ?>);
+			jaipho.mrSlider.mrSlidesComponent.SelectSlide( <?php echo $template->getSelectedIndex() ?>);
 		}
 		
 	</script>
 	
-	
-				
-
 </body>
 </html>
