@@ -30,7 +30,7 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
  		$theme_folder 	= 	apply_filters('jaipho_theme_folder_filter', $theme_folder);
 		
 		// JS & CSS
-		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wpjaipho/jaipho/jaipho-0.60.00.js'));
+		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wpjaipho/jaipho/jaipho-0.60.01.js'));
 		wp_enqueue_style( 'jaipho-default', $theme_folder.'/jaipho.css');
 		
 	}
@@ -46,7 +46,7 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
 		if ($this->plugin->getOptionBoolValue( 'jaipho_disable_slide_title'))
 			return '';
 			
-		return addslashes( $description);
+		return $this->sanitizeJavascriptString( $description);
 	}
 	
 	protected function getSlideTitle( $title)
@@ -54,7 +54,17 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
 		if ($this->plugin->getOptionBoolValue( 'jaipho_disable_slide_description'))
 			return '';
 		
-		return addslashes( $title);
+		return $this->sanitizeJavascriptString( $title);
+	}
+	
+	protected function sanitizeJavascriptString( $text)
+	{
+		$text	=	addslashes( $text);
+		$text	=	nl2br( $text);
+		$text	=	str_replace( "\n", "", $text);
+		$text	=	str_replace( "\r", "", $text);
+		
+		return $text;
 	}
 	
 	

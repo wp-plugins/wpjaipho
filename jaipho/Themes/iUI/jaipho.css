@@ -268,7 +268,7 @@ body[orient="landscape"] .button {
 	display: none;
 	background-color: #000;
 	width: 100%;
-	height: 100%;
+	height: inherit;
 }
 .splash-screen .text
 {
@@ -287,6 +287,11 @@ body[orient="landscape"] .button {
 
 
 /* LIST GALLERIES */
+#gallery-list
+{
+	min-height:inherit;
+}
+
 ul
 {
     margin: 0;

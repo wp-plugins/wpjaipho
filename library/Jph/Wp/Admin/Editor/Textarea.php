@@ -6,7 +6,7 @@ class Jph_Wp_Admin_Editor_Textarea implements Jph_Wp_Admin_Editor_IEditor
 {
 	public $rows;
 	public $cols;
-	public function __construct( $rows=5, $cols=60)
+	public function __construct( $rows=4, $cols=60)
 	{
 		$this->rows	=	$rows;
 		$this->cols	=	$cols;
