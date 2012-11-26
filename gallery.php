@@ -9,15 +9,16 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 	
 	<title><?php echo $template->getPageTitle() ?></title>
 
 	<!-- 
-		JAIPHO BETA version 0.60.00 - iPhone optimized javascript gallery
+		JAIPHO BETA version 0.60.01 - iPhone optimized javascript gallery
 		Check on http://www.jaipho.com/ for latest news and source updates 
 	 -->
-	
+	 
 		<?php wp_head() ?>
 		
 	<script type="text/javascript">
@@ -28,11 +29,11 @@
 			JphUtil_Console.CreateConsole( DEBUG_LEVELS);
 		
 	</script>	
-
+	
 </head>
 
 <body onload="init_jaipho()">
-
+	
 	<!-- 
 		Important! 
 		Do not remove elements with html attribute id set to some value. Those elements are required by javascript application.
@@ -40,6 +41,9 @@
 	 -->
 	
 	<!-- SPLASH SCREEN -->
+	<!-- 
+		Splash screen actually is not part of the Jaipho library. It is only part of a template.
+	-->
 	<table id="splash-screen" class="splash-screen">
 	<tr>
 		<td class="text">
@@ -47,26 +51,47 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="image" style="text-align: center; color: white;">
-		&nbsp;
+		<td class="image">
 		<?php echo $template->getSplashscreenHtml() ?>
+		&nbsp;
 		</td>
 	</tr>
 	</table>
 	
     <script type="text/javascript">
 
-    // iPhone fix to force full screen height
-    var splash	=	document.getElementById( 'splash-screen');
-	var start	=	window.innerHeight;	
-	var max		=	start * 2;
-	document.body.style.minHeight	= max + 'px';
+    function is_iphone_safari()
+    {
+    	var iphone	=	navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i);
+    	var safari	=	navigator.userAgent.match(/Safari/i);
+    	var chrome	=	navigator.userAgent.match(/CriOS/i);
+    	
+    	if(iphone && safari && !chrome)
+    		return true;
+    	return false;
+    };
+    
+    // iPhone fix to force full screen height even when there is not enough content on page
+	function iphone_enforce_height()
+	{
+		var start	=	window.innerHeight;	
+		var max		=	start * 2;
+		document.body.style.height	= max + 'px';
 
-	// enlarge to fit screen
-	window.scrollTo(0,0);
-	splash.style.height	=	window.innerHeight + 'px';
-	document.body.style.minHeight	= window.innerHeight + 'px';
+		// enlarge to fit screen
+		window.scrollTo(0,0); 
+		document.body.style.height	= window.innerHeight + 'px';
+	}
 	
+    </script>
+    
+    <script type="text/javascript">
+
+    if (is_iphone_safari())
+		iphone_enforce_height();
+    else
+		document.body.style.height	= document.documentElement.clientHeight + 'px'
+    
 	function init_jaipho()
 	{
 		var splash	=	document.getElementById( 'splash-screen');
@@ -79,10 +104,10 @@
     </script>
 	<!-- SPLASH SCREEN - END -->
 	
-		
+	
 	
 	<!-- JAIPHO PRELOAD IMAGES -->
-	<div id="preloader">
+	<div id="css-preloader">
 	</div>
 		
 	<!-- THUMBNAILS -->
@@ -105,14 +130,11 @@
 	</div>
 	
     <div id="thumbs-container">
+    	<?php echo $template->getThumbnailsHtml() ?>
     	
-    	<div style="text-align: center;">
-	    	<?php echo $template->getThumbnailsHtml() ?>
-	    	
-			<div id="thumbs-images-container">
-			</div>	
-			<div id="thumbs-count-text">
-			</div>
+    	<div id="thumbs-images-container">
+		</div>	
+		<div id="thumbs-count-text">
 		</div>
     </div>
 
@@ -157,6 +179,7 @@
 			</table>
 		</div>
     </div>
+    
 
 	<script type="text/javascript">
 
@@ -166,10 +189,7 @@
 		 // load images
 		var dao	=	new Jph_Dao();
 
-		
 		<?php echo $template->getJavascriptLoad(); ?>
-
-	
 
 		var jaipho;
 		
@@ -190,8 +210,5 @@
 		
 	</script>
 	
-	
-				
-
 </body>
 </html>
