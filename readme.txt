@@ -1,12 +1,12 @@
-=== WPJaipho ===
+=== WPJaipho Mobile Gallery ===
 Contributors: tolecar, nosf, secretja
-Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone
+Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone,swipe
 Requires at least: 3.0
-Tested up to: 3.4
+Tested up to: 3.4.2
 License: GPLv2
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 
-WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for iPhone and iPad users
+WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for mobile users
 
 == Description ==
 
@@ -40,8 +40,10 @@ After the activation, any page containing Gallery made on WP Media Library or Ne
 
 == Changelog ==
 
-= v1.4.1 - 3.11.2012 - selection fix =
+= v1.4.1 - 26.11.2012 - selection fix =
 * Bugfix : Fixed not working direct slide selection
+* Bugfix : Javascript library upgraded to Jaipho 0.60.1
+* Bugfix : Fixed problem with multiline image descriptions
 
  
 = v1.4.0 - 31.10.2012 - Android support =
