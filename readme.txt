@@ -2,7 +2,7 @@
 Contributors: tolecar, nosf, secretja
 Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone,swipe
 Requires at least: 3.0
-Tested up to: 3.4.2
+Tested up to: 3.5
 License: GPLv2
 Stable tag: 1.4.1
 
