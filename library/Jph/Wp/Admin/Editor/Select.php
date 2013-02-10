@@ -13,9 +13,15 @@ class Jph_Wp_Admin_Editor_Select implements Jph_Wp_Admin_Editor_IEditor
 
 	public function printHtml( $name, $value)
 	{
-		// TODO: implement
 		?>
-		<input type="text" name="<?php echo $name; ?>" value="<?php echo $value; ?>" size="20">
+		<select name="<?php echo $name; ?>">
+		<?php
+			foreach ($this->options as $option)
+			{
+				echo '<option'.($option == $value ? ' selected' : '').'>'. $option . '</option>';
+			}
+		?>
+		</select>
 		<?php
 	}
 }

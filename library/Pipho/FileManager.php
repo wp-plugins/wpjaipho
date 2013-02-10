@@ -77,35 +77,23 @@ class Pipho_FileManager
 	/**
 	 * Enter description here...
 	 *
-	 * @param bool $loadFirstImage should gallery objects have preloaded first image (usable when listing galleries)
-	 * @param string $galleryId  
-	 * @return multitype:Pipho_Gallery 
+	 * @param bool $loadFirstImage should gallery objects have preloaded first image (usable when listing galleries) 
+	 * @return array Pipho_Gallery
 	 */
-	public function getGalleries( $loadFirstImage=false, $galleryId=null)
+	public function getGalleries( $loadFirstImage=false)
 	{
-		if ($galleryId)
-			$baseDir	=	$this->_getGalleryFolder( $galleryId);
-		else
-			$baseDir	=	$this->photosDir.$galleryId;
-		
 		$folders		=	array();
-		$handle			=	opendir( $baseDir);
+		$handle			=	opendir( $this->photosDir);
 	    while (false !== ($file = readdir($handle))) 
 	    {
 	        if ($file != "." && $file != "..") 
 	        {
- 	        	$folder_path	=	$baseDir.'/'.$file;
+	        	$folder_path	=	$this->photosDir.'/'.$file;
 
- 	        	if (is_dir( $folder_path))
- 	        	{
- 	        		if (!$this->_isValidFolder( $file))
- 	        			continue;
- 	        	}
- 	        	else
- 	        	{
-//  	        		if (!$this->_isValidFile( $file))
- 	        			continue;
- 	        	}
+	        	if (!is_dir( $folder_path))
+					continue;
+				if (!$this->_isValidFile( $file))
+					continue;
 					
 				$folders[]	=	$file;
 	        }
@@ -123,7 +111,7 @@ class Pipho_FileManager
     	$galleries		=	array();
     	foreach ($folders as $folder_name)
     	{
-    		$gallery = $this->getGallery( $galleryId ? $galleryId.'/'.$folder_name : $folder_name);
+    		$gallery = $this->getGallery( $folder_name);
     		if ($loadFirstImage)
     			$this->_loadFirstImage( $gallery);
 
@@ -149,18 +137,8 @@ class Pipho_FileManager
 		$gallery->id			=	$galleryId;
 		$gallery->title			=	$info[0] ? $info[0] : $galleryId;
 		$gallery->description	=	$info[1];
-
-		$gallery->container	=	$this->hasSubGalleries( $galleryId);
 		
 		return $gallery;
-	}
-	
-	private function hasSubGalleries( $galleryId)
-	{
-		$galeries		=	$this->getGalleries( false, $galleryId);
-		if (count( $galeries) > 0)
-			return true;
-		return false;
 	}
 
 	public function _loadFirstImage( Pipho_Gallery $gallery)
@@ -266,17 +244,6 @@ class Pipho_FileManager
     	
 		return $images;
 	} 
-	
-	protected function _isValidFolder( $filename)
-	{
-		if (in_array( strtolower( $filename), $this->skipList))
-			return false;
-		
-		if ($filename == 'resized')
-			return false;
-		
-		return true;
-	}
 	
 	protected function _isValidFile( $filename)
 	{
@@ -386,15 +353,5 @@ class Pipho_FileManager
 		
 		return $gallery_path;
 	} 	
-	
-	public static function getParentGalleryId( $galleryId)
-	{
-		if (!$galleryId)
-			return null;
-		
-		$arr 	=	explode( "/", $galleryId);
-		array_pop( $arr);
-		return join( "/", $arr);
-	}
 }
 ?>
