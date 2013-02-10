@@ -1,7 +1,7 @@
 <?php 
 /*
 Plugin Name: WPJaipho Mobile Gallery
-Version: 1.4.1
+Version: 1.4.2
 Plugin URI: http://www.jaipho.com
 Description: WPJaipho is a mobile image gallery plugin optimized for iPhone, iPad and Android users. 
 Author: tole
@@ -21,7 +21,6 @@ define( 'XX_DEBUG_ENABLED', WP_DEBUG);
 define( 'XX_LOG_ENABLED', WP_DEBUG && WP_DEBUG_LOG);
 Xx_Log::createDefaultLog();
 // Xx_Log::createLog( @realpath(ABSPATH.'/../').'/log/', 'jaipho', true);
-
 
 
 // ENABLE PLUGIN
@@ -51,6 +50,8 @@ else
 		{
 			add_filter( 'option_ngg_options', 'jaipho_ngg_fix_options_filter');
 		}
+		
+		add_filter( 'option_wpseo_permalinks', 'jaipho_wpseo_fix_options_filter');
 	}
 }
 

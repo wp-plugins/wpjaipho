@@ -32,7 +32,7 @@ class Jph_Wp_NextGenGalleryTemplate extends Jph_Wp_AbstractTemplateApi
 			the_post();
 			
 			// copy&paste from the_content()
-			$content = get_the_content($more_link_text, $stripteaser);
+			$content = get_the_content();
 			$content = apply_filters('the_content', $content);
 			$content = str_replace(']]>', ']]&gt;', $content);
 		}
@@ -62,7 +62,10 @@ class Jph_Wp_NextGenGalleryTemplate extends Jph_Wp_AbstractTemplateApi
 		$this->javascriptLoad	=	'';
 		
 		foreach ( $picturelist as $picture ) {
-			if ( $picture->pid == $pid )
+			
+//			Xx_Log::logDebug( 'Picture ['.print_r($picture, true).']');
+			
+			if ( $picture->pid == $pid || $picture->image_slug == $pid)
 				$this->selectedIndex = $i;
 			
 			$this->galleryTitle	=	$picture->title;
@@ -88,6 +91,15 @@ class Jph_Wp_NextGenGalleryTemplate extends Jph_Wp_AbstractTemplateApi
 	public function getGalleryTitle()
 	{
 		return $this->galleryTitle;
+	}
+	
+	protected function sanitizeJavascriptString( $text)
+	{
+		$text	=	nl2br( $text);
+		$text	=	str_replace( "\n", "", $text);
+		$text	=	str_replace( "\r", "", $text);
+	
+		return $text;
 	}
 }
 

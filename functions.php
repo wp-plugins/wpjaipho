@@ -90,6 +90,17 @@ function jaipho_ngg_set_template_handler_filter( $handler)
 	return $handler;
 }
 
+// YOST WORDPRESS SEO
+/**
+ * Forces not to redirect attahments
+ * @param array $optopns
+ * @return array
+ */
+function jaipho_wpseo_fix_options_filter( $optopns)
+{
+	unset( $optopns['redirectattachment']);
+	return $optopns;
+}
 
 
 

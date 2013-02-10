@@ -2,9 +2,9 @@
 Contributors: tolecar, nosf, secretja
 Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone,swipe
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.5.1
 License: GPLv2
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 
 WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for mobile users
 
@@ -39,6 +39,12 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
+
+= v1.4.2 - 10.2.2013 - ngg permalinks and quotes fix =
+* Bugfix : Fixed not working direct slide selection on NextGEN gallery when permalinks are active
+* Bugfix : Removed addslashes for NextGEN Gallery images (NextGEN fixes quotes by itself) 
+* Bugfix : Forcing the Yoast WordPress SEO to disable "Redirect attachment URL's to parent post URL." option
+
 
 = v1.4.1 - 26.11.2012 - selection fix =
 * Bugfix : Fixed not working direct slide selection
