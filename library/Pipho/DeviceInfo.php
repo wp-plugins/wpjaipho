@@ -32,6 +32,11 @@ class Pipho_DeviceInfo
 			$info->thumbsSize		=	75;
 			$info->slideMaxSize		=	1024;
 		}
+		else if (self::isAndroid())
+		{
+			$info->thumbsSize		=	75;
+			$info->slideMaxSize		=	600;
+		}
 		else 
 		{
 			// failback
@@ -45,7 +50,7 @@ class Pipho_DeviceInfo
 	
 	public static function isSupported()
 	{
- 		return self::isIpad() || self::isIphone();
+ 		return self::isIpad() || self::isIphone() || self::isAndroid();
 	}
 	
 	public static function isIphone()
@@ -65,6 +70,17 @@ class Pipho_DeviceInfo
 		$user_agent		=	self::_getUserAgent();
 		
 		if (strstr( $user_agent,'ipad'))
+ 		{
+ 			return true;
+ 		}
+ 		return false;
+	}
+	
+	public static function isAndroid()
+	{
+		$user_agent		=	self::_getUserAgent();
+		
+		if (strstr( $user_agent,'android'))
  		{
  			return true;
  		}
