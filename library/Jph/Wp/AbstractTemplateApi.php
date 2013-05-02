@@ -30,7 +30,7 @@ abstract class Jph_Wp_AbstractTemplateApi implements Jph_Wp_ITemplateApi
  		$theme_folder 	= 	apply_filters('jaipho_theme_folder_filter', $theme_folder);
 		
 		// JS & CSS
-		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wpjaipho/jaipho/jaipho-0.60.01.js'));
+		wp_enqueue_script( 'jaipho-preload', plugins_url( 'wpjaipho/jaipho/jaipho-0.60.02.js'));
 		wp_enqueue_style( 'jaipho-default', $theme_folder.'/jaipho.css');
 		
 	}

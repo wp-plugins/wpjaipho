@@ -10,6 +10,7 @@ require_once 'Jph/Wp/Admin/Editor/Input.php';
 require_once 'Jph/Wp/Admin/Editor/Select.php';
 require_once 'Jph/Wp/Admin/Editor/Checkbox.php';
 require_once 'Jph/Wp/Admin/Editor/Textarea.php';
+require_once 'Jph/Wp/Admin/Editor/Readonly.php';
 
 require_once 'Jph/Wp/Admin/Validator/OptionCssTimeDefinition.php';
 require_once 'Jph/Wp/Admin/Validator/OptionIntListDefinition.php';
@@ -213,13 +214,12 @@ class Jph_Wp_PluginConfiguration
 				new Jph_Wp_JaiphoConfigurationOption(
 						'DEBUG_MODE', 'Debug mode', 'jaipho_js_debug_mode', 'false',
 						'Is application in debug mode. In Firefox with Firebug enabled, it will use Firebug console. On all others, including iPhone, console div will be shown over the content.',						
-						new Jph_Wp_Admin_Editor_Select( $truefalses),
-						new Jph_Wp_Admin_Validator_OptionListDefinition( $truefalses)),
+						new Jph_Wp_Admin_Editor_Readonly()),
 						
 				new Jph_Wp_JaiphoConfigurationOption(
 						'DEBUG_LEVELS', 'Debug levels', 'jaipho_js_debug_levels', '',
 						'To much debug output will not be usable at all, so here you can set list of modules which are enabled for debug.',						
-						new Jph_Wp_Admin_Editor_Input()),								
+						new Jph_Wp_Admin_Editor_Readonly()),								
 			));
 		
 	}

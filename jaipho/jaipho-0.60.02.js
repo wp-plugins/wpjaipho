@@ -1,5 +1,5 @@
 /******************************************************************************
- *	JAIPHO BETA, version 0.60.01 Vertical align fix
+ *	JAIPHO BETA, version 0.60.02 array traversing fix
  *
  *	JAIPHO BETA is freely used under the terms of an LGPL license.
  *	For details, see the JAIPHO web site: http://www.jaipho.com/
@@ -556,7 +556,7 @@ function JphUtil_Event( name, source, e)
 		var arr		= 	this.maListeners[name] || (this.maListeners[name] = []);
 		
 		
-		for (var i in arr)
+		for (var i=0; i<arr.length; i++)
 		{
 			var master		=	arr[i]['master'];
 			var method		=	arr[i]['method'];
@@ -765,7 +765,7 @@ function debug( str)
   
  JphUtil_Console.prototype._ShouldDebug = function( str)
  {
- 	for (var i in this.maModules)
+	for (var i=0; i<this.maModules.length; i++)
  	{
 		if (str.indexOf( this.maModules[i] + ':') == 0)
 			return true;	 		
@@ -878,7 +878,7 @@ function JphThumbs_ThumbsApp( app)
 	this.mrBehavior			=	new JphThumbs_Behavior( this);
 	this.mrBehavior.Init();
 	
-	for (var i in this.mrApp.mrDao.maImages)
+	for (var i=0; i<this.mrApp.mrDao.maImages.length; i++)
 	{
 		this.maThumbnails[this.maThumbnails.length]	=	
 				new JphThumbs_Item( this.mrApp, this.mrApp.mrDao.maImages[i]);
@@ -890,7 +890,7 @@ function JphThumbs_ThumbsApp( app)
  	this.mhThumbnails.innerHTML		=	this._HtmlThumbs();
 	this.mhThumbsCount.innerHTML	=	this._HtmlCount();
 	
-	for (var i in this.maThumbnails)
+	for (var i=0; i<this.maThumbnails.length; i++)
 	{
 		this.maThumbnails[i].Init();
 		
@@ -913,7 +913,7 @@ function JphThumbs_ThumbsApp( app)
  	var str	=	new Array();
 	var cnt	=	0;
 	
-	for (var i in this.maThumbnails)
+	for (var i=0; i<this.maThumbnails.length; i++)
 		str[cnt++]	=	this.maThumbnails[i].Html();
 	
 	return str.join('');
@@ -1094,7 +1094,7 @@ function JphSlider_ToolbarsManager()
  JphSlider_ToolbarsManager.prototype.GetHeight	=	function()
  {
 	 var height	=	0;
-	 for (var i in this.maElements)
+	 for (var i=0; i<this.maElements.length; i++)
 		 height += this.GetSingleHeight();
 	 return height;
  };
@@ -1109,7 +1109,7 @@ function JphSlider_ToolbarsManager()
  {
 	this._RemoveDeactivation();
 		
- 	for (var i in this.maElements)
+	for (var i=0; i<this.maElements.length; i++)
 		this.maElements[i].style.display	=	'block';
 		
 	this._SetDeactivation();
@@ -1132,7 +1132,7 @@ function JphSlider_ToolbarsManager()
  {
 	this._RemoveDeactivation();
 	
- 	for (var i in this.maElements)
+	for (var i=0; i<this.maElements.length; i++)
 		this.maElements[i].style.display	=	'none';
 		
 	this.mHidden	=	true;
@@ -1347,7 +1347,7 @@ function JphSlider_SlidesComponent( app, images, container)
  {
 	
 	var last_slide	=	null;
-	for (var i in this.maImages)
+	for (var i=0; i<this.maImages.length; i++)
 	{
 		var image 	=	this.maImages[i];
 		var slide	=	new JphSlider_Slide( this.mrContainer, this.mrPreloader, this.mrImageQueue, image);	
@@ -1374,7 +1374,7 @@ function JphSlider_SlidesComponent( app, images, container)
 //	this.mrAnimation				=	new JphSlider_Animation( this.mhSliderTable);
 //	this.mrAnimation.Init();
 	
-	for (var i in this.maSlides) 
+	for (var i=0; i<this.maSlides.length; i++)
 	{
 		this.maSlides[i].Init();
 	}
@@ -1406,7 +1406,7 @@ function JphSlider_SlidesComponent( app, images, container)
 			
 	str[cnt++]	=	'<table id="slider-table" cellspacing="0" cellpadding="0" style="position: absolute;">';
 	str[cnt++]	=	'<tr>';
-	for (var i in this.maSlides)
+	for (var i=0; i<this.maSlides.length; i++)
 	{
 		str[cnt++]	=	this.maSlides[i].HtmlSlide();
 	} 	
@@ -1802,7 +1802,7 @@ function JphSlider_Slide( container, preloader, queue, image)
 
  	// 	
  	var indexes			=	SLIDE_PRELOAD_SEQUENCE.split(',');
- 	for (var i in indexes)
+ 	for (var i=0; i<indexes.length; i++)
  	{
  		var distance			=	parseInt( indexes[i]);
  		var sequence_slide		=	this.GetSibling( distance);
@@ -1878,7 +1878,7 @@ function JphSlider_Slide( container, preloader, queue, image)
  	var reverse		=	strReverse == 'true' ? true : false;
  	var slides		=	reverse ? this.maNeighboursReverse : this.maNeighboursDefault;
  	
- 	for (var i in slides)
+ 	for (var i=0; i<slides.length; i++)
  		slides[i]._Load();
  };
  
@@ -1960,7 +1960,7 @@ function JphSlider_ImageQueue( queueSize)
 	
 	var arr	=	new Array();
 	
-	for (var i in this.maLruQueue)
+	for (var i=0; i<this.maLruQueue.length; i++)
 		if (this.maLruQueue[i] != img)
 			arr[arr.length]	=	this.maLruQueue[i];
 			
@@ -2635,7 +2635,7 @@ function Jph_Dao()
 
  Jph_Dao.prototype.GetImage			=	function( url)
  {
-	for (var i in this.maImages)
+	 for (var i=0; i<this.maImages.length; i++)
 	{
 		var image		=	this.maImages[i];
 		if ( image.src == url)
