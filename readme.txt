@@ -40,6 +40,11 @@ After the activation, any page containing Gallery made on WP Media Library or Ne
 
 == Changelog ==
 
+= v1.4.3 - 2.5.2013 - javascript arrays fix =
+* Bugfix : fixed javascript compatibility issue with scripts which are modifyng the Array object itself
+* Bugfix : disabled javascript debug related options on settings page
+
+
 = v1.4.2 - 10.2.2013 - ngg permalinks and quotes fix =
 * Bugfix : Fixed not working direct slide selection on NextGEN gallery when permalinks are active
 * Bugfix : Removed addslashes for NextGEN Gallery images (NextGEN fixes quotes by itself) 
