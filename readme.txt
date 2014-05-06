@@ -19,11 +19,9 @@ WP Jaipho works with: <a href="http://wordpress.org/extend/plugins/nextgen-galle
 = How Does it Work? =
 Simple enough - just activate the plugin, and all your galleries are automatically transformed into mobile optimized gallery, which is visible for mobile users only. Check out demo <a href="http://www.viberfaq.com/viber-android-beta-version-review/" target="_blank">here</a> with your iPhone.
 
-= Further Resources =
+= Demo =
 
 * WPJaipho installation on <a href="http://www.viberfaq.com/viber-android-beta-version-review/" target="_blank">The Viber FAQ</a><br>
-* <a href="http://jaiphodemo.info/" target="_blank">Jaipho Demo</a><br>
-* <a href="http://jaipho.com/" target="_blank">Jaipho Gallery Official Website</a><br>
 
 
 
@@ -39,6 +37,10 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
+¸
+= v1.4.4 - 7.5.2013 - ngg legacy fix =
+* Bugfix : ngg detection changed to be more general
+
 
 = v1.4.3 - 2.5.2013 - javascript arrays fix =
 * Bugfix : fixed javascript compatibility issue with scripts which are modifyng the Array object itself

@@ -63,7 +63,11 @@ function jaipho_is_ngg_call()
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 	$pid   			= 	get_query_var('pid');
-	$ngg_gallery	=	is_plugin_active( 'nextgen-gallery/nggallery.php') && !empty($pid);
+	
+	Xx_Log::logDebug( 'pid ['.$pid.']');
+	Xx_Log::logDebug( 'NGG_PLUGIN_DIR ['.defined('NGG_PLUGIN_DIR').'], NGGFOLDER ['.defined('NGGFOLDER').']');
+	
+	$ngg_gallery	=	( defined('NGG_PLUGIN_DIR') || defined('NGGFOLDER') ) && !empty($pid);
 
 	return $ngg_gallery;
 }
