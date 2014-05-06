@@ -4,13 +4,13 @@ require_once 'Jph/Wp/ConfigurationOption.php';
 
 
 
-class Jph_Wp_ScriptConfigurationOption extends Jph_Wp_ConfigurationOption
+class Jph_Wp_JaiphoConfigurationOption extends Jph_Wp_ConfigurationOption
 {
 	public $jaiphoName;
 
-	public function __construct( $jaiphoName, $label, $optionName, $default, $editor, $validator=null)
+	public function __construct( $jaiphoName, $label, $optionName, $default, $description, $editor, $validator=null, $adapter=null)
 	{
-		parent::__construct( $label, $optionName, $default, $editor, $validator);
+		parent::__construct( $label, $optionName, $default, $description, $editor, $validator, $adapter);
 		$this->jaiphoName	=	$jaiphoName;
 	}
 	
