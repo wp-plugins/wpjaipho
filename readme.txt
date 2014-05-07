@@ -38,7 +38,11 @@ After the activation, any page containing Gallery made on WP Media Library or Ne
 
 == Changelog ==
 ¸
-= v1.4.4 - 7.5.2013 - ngg legacy fix =
+= v1.4.5 - 8.5.2014 - Jetpack carousel fix =
+* Bugfix : disables Jetpack carousel gallery on wpjaipho supported devices (iphone, ipad ...)
+
+
+= v1.4.4 - 7.5.2014 - ngg legacy fix =
 * Bugfix : ngg detection changed to be more general
 
 
