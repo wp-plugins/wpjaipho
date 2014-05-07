@@ -1,5 +1,12 @@
 
 
+#css-preloader {
+    display: none;
+    background-image: url(btnBack.png),
+        url(navNext.png), url(navPause.png), url(navPlay.png)
+        ,url(navPrev.png), url(toolbar.png), url(loading.gif);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +14,6 @@ body {
     font-size: 16px;
     color: #000;
 	border-collapse: collapse;
-	min-height: 417px;
 }
 
 .thumbs
@@ -18,11 +24,6 @@ body {
 .slider
 {
 	background-color: #FFF;
-}
-
-body[orient="landscape"] 
-{
-	min-height: 269px;
 }
 
 img
@@ -39,6 +40,7 @@ img
 	font-weight: bold;
 	background: url(toolbar.png) #6d84a2 repeat-x;
 	height:44px;
+	width:100%;	
 	line-height:44px;	
 	opacity: 0.90;
 	
@@ -51,38 +53,30 @@ img
 
 .toolbar table
 {
-	width: 320px;
-}
-body[orient="landscape"] .toolbar table
-{
-	width: 480px;
-}
-
-.toolbar table .wing
-{
-	width:100px;
-}
-body[orient="landscape"] .toolbar table .wing
-{
-	width:120px;
+	width:100%;	
 }
 
 .toolbar table .center
 {
-	width:120px;
-	display:block;
+	width:50%;
+	max-width: 200px;
 	text-align: center;
 	overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
-    white-space: nowrap;	
+    white-space: nowrap;		
 }
 
 body[orient="landscape"] .toolbar table .center
 {
-	width:220px;
+	max-width: 300px;
 }
- 
+
+.toolbar table .wing
+{
+	width:25%;
+}
+
 
 /* THUMBNAILS */
 #thumbs-container
@@ -125,16 +119,13 @@ body[orient="landscape"] .toolbar table .center
 
 
 /* SLIDER  */
-
 #slider-container
 {
+	position: absolute;
 	display: none;
-	line-height:0;
-	overflow:hidden;
-	background-color: #fff;
-	width: 100%;
-	height: 100%;	
-	color: #000;
+	overflow: hidden;
+	background-color: #000;
+	color: #FFF;
 }
 
 /* SLIDE  */
@@ -142,27 +133,8 @@ body[orient="landscape"] .toolbar table .center
 {
 	vertical-align: middle;
 	text-align: center;	
-	width: 320px;
-	height: 417px;
 }
 
-body[orient="landscape"] #slider-container .slide
-{
-	width:480px;
-	height: 269px;
-}
-
-#slider-container .slide img
-{	
-	max-width: 320px;
-	max-height: 417px;
-}
-
-body[orient="landscape"] #slider-container .slide img
-{	
-	max-width: 480px;
-	max-height: 269px;
-}
 
 /* SLIDE DESCRIPTION */
 .slider-text
@@ -172,22 +144,12 @@ body[orient="landscape"] #slider-container .slide img
 	color: white;
 	font-size: 20px;
 	text-align: center;
-	text-shadow: rgba(0, 0, 0, 0.9) 1px 1px 3px;
+	text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
 }
 
 #slider-desc-container
 {
 	position: absolute;	
-	width:320px;
-	height:328px;
-	top:44px;
-}
-body[orient="landscape"] #slider-desc-container
-{
-	position: absolute;	
-	width:480px;
-	height:178px;
-	top:44px;
 }
 
 #desc-title
@@ -213,22 +175,21 @@ body[orient="landscape"] #slider-desc-container
 #slider-toolbar-top
 {
 	position: absolute;
+	margin-top: -1px;
+}
+#slider-toolbar-top table
+{
+	width: 100%;
 }
 
 #slider-toolbar-bottom
 {
 	position: absolute;
-	top: 374px;
-}
-
-body[orient="landscape"] #slider-toolbar-bottom
-{
-	position: absolute;
-	top: 225px;
+	bottom: 0px;
+	margin-bottom: -2px;
 }
 
 /* NAVI ELEMENTS */
-
 .button {
 	float:left;
 	overflow: hidden;
@@ -239,8 +200,8 @@ body[orient="landscape"] #slider-toolbar-bottom
     padding-left: 3px;
     padding-right: 3px;
     height: 30px;
-	min-width: 35px;
-	max-width: 60px;
+	min-width: 50px;
+	max-width: 80px;
 	
     line-height: 30px;
     font-family: inherit;
@@ -256,7 +217,8 @@ body[orient="landscape"] #slider-toolbar-bottom
 }
 
 body[orient="landscape"] .button {
-	max-width: 100px;
+	min-width: 70px;
+	max-width: 120px;
 }
 
 .navi-button
@@ -299,13 +261,6 @@ body[orient="landscape"] .button {
 	background-position: center center;
 }
 
-/* UTIL */
-#preloader {
-    display: none;
-    background-image: url(btnBack.png),
-        url(navNext.png), url(navPause.png), url(navPlay.png)
-        ,url(navPrev.png), url(toolbar.png), url(loading.gif);
-}
 
 /* SPLASH SCREEN */
 .splash-screen
@@ -313,6 +268,7 @@ body[orient="landscape"] .button {
 	display: none;
 	background-color: #000;
 	width: 100%;
+	height: inherit;
 }
 .splash-screen .text
 {
@@ -329,16 +285,12 @@ body[orient="landscape"] .button {
 	background-position: center top;
 }
 
-#splash-screen
-{
-	height: 417px;
-}
-body[orient="landscape"] #splash-screen
-{
-	height: 269px;
-}
 
 /* LIST GALLERIES */
+#gallery-list
+{
+	min-height:inherit;
+}
 
 ul
 {
