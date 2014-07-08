@@ -56,9 +56,12 @@ else
 		
 		Xx_Log::logDebug( 'Fixing other plugins');
 		add_filter( 'option_wpseo_permalinks', 'jaipho_wpseo_fix_options_filter');
-		add_filter( 'jp_carousel_maybe_disable', function () { return true;});
+		add_filter( 'jp_carousel_maybe_disable', 'jaipho_carousel_disable_filter');
 	}
 }
+
+function jaipho_carousel_disable_filter()
+{ return true; }
 
 // thumbnails for Jaipho - used for media library galleries
 add_image_size( 'jaipho-thumbnail', 75, 75, true );

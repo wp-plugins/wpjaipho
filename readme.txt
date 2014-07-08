@@ -1,12 +1,12 @@
 === WPJaipho Mobile Gallery ===
-Contributors: tolecar, nosf, secretja
+Contributors: tolecar
 Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone,swipe
 Requires at least: 3.0
 Tested up to: 3.9
 License: GPLv2
 Stable tag: 1.4.5
 
-WPJaipho extends native Wordpress image gallery and NextGEN Gallery with optimized support for mobile users
+WPJaipho extends native Wordpress image gallery, NextGEN 1.x and NextCellent Gallery with optimized support for mobile users
 
 == Description ==
 
@@ -27,23 +27,27 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 
 == Installation ==
 
-1. Download the plugin from Wordpress.org, and install the plugin.
+1. Download the plugin from Wordpress.org, and install it.
 
 2. Activate WPJaipho after the installation.
 
 3. Optionally - visit Settings page for some modifications.
 
 
-After the activation, any page containing Gallery made on WP Media Library or NextGEN plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
+After the activation, any page containing Gallery made on WP Media Library, NextGEN 1.x or NextCellent plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
-¸
+= 
+* Bugfix : Fixes pre 5.3 PHP issue with anonymous functions
+
+
+
 = v1.4.5 - 8.5.2014 - Jetpack carousel fix =
 * Bugfix : disables Jetpack carousel gallery on wpjaipho supported devices (iphone, ipad ...)
 
 
 = v1.4.4 - 7.5.2014 - ngg legacy fix =
-* Bugfix : ngg detection changed to be more general
+* Bugfix : ngg detection changed to be more general - NextCellent gallery support
 
 
 = v1.4.3 - 2.5.2013 - javascript arrays fix =
