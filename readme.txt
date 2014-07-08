@@ -39,7 +39,7 @@ After the activation, any page containing Gallery made on WP Media Library, Next
 == Changelog ==
 = 
 * Bugfix : Fixes pre 5.3 PHP issue with anonymous functions
-
+* Feature : option to exclude featured image from gallery
 
 
 = v1.4.5 - 8.5.2014 - Jetpack carousel fix =

@@ -115,7 +115,7 @@ class Jph_Wp_JaiphoPlugin
 	
 	public function getOptionBoolValue( $optionName)
 	{
-		return (bool)$this->configuration->getOption($optionName)->getValue();
+		return filter_var( $this->configuration->getOption($optionName)->getValue(), FILTER_VALIDATE_BOOLEAN);
 	}
 	
 	

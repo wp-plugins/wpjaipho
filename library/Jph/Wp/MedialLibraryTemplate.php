@@ -17,8 +17,11 @@ class Jph_Wp_MediaLibraryTemplate  extends Jph_Wp_AbstractTemplateApi
 		parent::init();
 		
 		global $post;
+
+		$exclude_featured	=	$this->plugin->getOptionBoolValue( 'jaipho_exclude_featured');
 		$attachments = array_values( get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 
-				'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) ) );
+				'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID', 
+				'exclude' => $exclude_featured ? get_post_thumbnail_id( $post->post_parent ) : '') ) );
 		$i=0;
 		
 		$this->selectedIndex	=	0;
