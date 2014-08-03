@@ -54,9 +54,10 @@ else
 			add_filter( 'option_ngg_options', 'jaipho_ngg_fix_options_filter');
 		}
 		
-		Xx_Log::logDebug( 'Fixing other plugins');
+		Xx_Log::logDebug( 'Fixing other plugins and themes');
 		add_filter( 'option_wpseo_permalinks', 'jaipho_wpseo_fix_options_filter');
 		add_filter( 'jp_carousel_maybe_disable', 'jaipho_carousel_disable_filter');
+		add_filter( 'option_cyberchimps_options', 'jaipho_parallax_fix_options_filter');
 	}
 }
 

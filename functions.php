@@ -106,5 +106,12 @@ function jaipho_wpseo_fix_options_filter( $optopns)
 	return $optopns;
 }
 
+// PARALLAX THEME
+function jaipho_parallax_fix_options_filter( $optopns)
+{
+	$optopns['gallery_lightbox']	=	0;
+	return $optopns;
+}
+
 
 
