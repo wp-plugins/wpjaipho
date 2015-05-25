@@ -116,7 +116,7 @@
 		<table cellpadding="0" cellspacing="0">
 		<tr>
 			<td class="wing">
-				<a class="button" href="<?php echo $template->getThumbsBackLink() ?>">
+				<a class="button" style="background-color: inherit;" href="<?php echo $template->getThumbsBackLink() ?>">
 					<?php echo $template->getThumbsBackTitle() ?>
 				</a> 
 			</td>
@@ -147,7 +147,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
 			<tr>
 				<td class="wing">
-					<a class="button" href="<?php echo $template->getSliderBackLink() ?>">
+					<a class="button" style="background-color: inherit;" href="<?php echo $template->getSliderBackLink() ?>">
 						<?php echo $template->getSliderBackTitle() ?>
 					</a> 
 				</td>

@@ -48,6 +48,11 @@ class Jph_Wp_PluginConfiguration
 		$this->sections[]	=	new Jph_Wp_ConfigurationSection( 'basic-options', 'Basic options',
 			array(
 			
+				new Jph_Wp_ConfigurationOption( 'Exclude featured image', 'jaipho_exclude_featured', 'true',
+						'It applays only to wordpress media libaray galleries.',
+						new Jph_Wp_Admin_Editor_Select( $truefalses),
+						new Jph_Wp_Admin_Validator_OptionListDefinition( $truefalses)),
+									
 				new Jph_Wp_ConfigurationOption( 'Splashscreen loading text', 'jaipho_loading_title', 'JAIPHO',
 						'Sets the text displayed when gallery is in loading phase',
 						new Jph_Wp_Admin_Editor_Input()),
@@ -266,7 +271,7 @@ class Jph_Wp_PluginConfiguration
 			}
 		}
 		
-		throw new Exception( 'Group ['.$group.'] not found');
+		throw new Exception( 'Option ['.$optionName.'] not found');
 	}
 	
 	public function getJaiphoOptions()
