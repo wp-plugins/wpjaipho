@@ -2,7 +2,7 @@
 Contributors: tolecar
 Tags: photos,slideshow,images,gallery,media,photo-albums,pictures,photo,picture,image,iphone,ipad,mobile,android,smartphone,swipe
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.2.2
 License: GPLv2
 Stable tag: 1.4.5
 
@@ -14,7 +14,7 @@ WPJaipho is plugin which adds mobile optimized look & feel to your WP based gall
 It is based on the original <a href="http://jaipho.com/" target="_blank">Jaipho</a>, iPhone optimized Javascript gallery and it works on iPhone, iPad and Android devices.
 
 = Supported WP galleries =
-WP Jaipho works with: <a href="http://wordpress.org/extend/plugins/nextgen-gallery/" target="_blank">NextGEN</a> Gallery and Default WP Gallery (via Media Library). It also works flawlessly with some mobile theme plugins such as <a href="http://wordpress.org/extend/plugins/wptouch/" target="_blank">WPTouch</a> and <a href="http://wordpress.org/extend/plugins/wordpress-mobile-pack/" target="_blank">WordPress Mobile Pack</a>.
+WP Jaipho works with: <a href="http://wordpress.org/extend/plugins/nextgen-gallery/" target="_blank">NextGEN 1.x</a> Gallery and Default WP Gallery (via Media Library). It also works flawlessly with some mobile theme plugins such as <a href="http://wordpress.org/extend/plugins/wptouch/" target="_blank">WPTouch</a> and <a href="http://wordpress.org/extend/plugins/wordpress-mobile-pack/" target="_blank">WordPress Mobile Pack</a>.
 
 = How Does it Work? =
 Simple enough - just activate the plugin, and all your galleries are automatically transformed into mobile optimized gallery, which is visible for mobile users only. Check out demo <a href="http://www.viberfaq.com/viber-android-beta-version-review/" target="_blank">here</a> with your iPhone.
@@ -37,10 +37,11 @@ Simple enough - just activate the plugin, and all your galleries are automatical
 After the activation, any page containing Gallery made on WP Media Library, NextGEN 1.x or NextCellent plugin will work out of the box, transforming the gallery pages into mobile optimized for all iPhone and iPad visitors on your site. 
 
 == Changelog ==
-= 
-* Bugfix : Fixes pre 5.3 PHP issue with anonymous functions
+= v1.5.0 - 25.5.2015 - exclude featured image =
 * Feature : option to exclude featured image from gallery
+* Bugfix : Fixes pre 5.3 PHP issue with anonymous functions
 * Bugfix : disables Parallax theme lightbox gallery on wpjaipho supported devices
+* Bugfix : disable all stylesheets that theme and other plugins might include
 
 
 = v1.4.5 - 8.5.2014 - Jetpack carousel fix =
