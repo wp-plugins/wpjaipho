@@ -39,12 +39,28 @@ function jaipho_template_include_filter( $template)
  		if (jaipho_is_ngg_call())
 			add_filter( 'jaipho_template_api_handler_filter', 'jaipho_ngg_set_template_handler_filter');
 		
+ 		add_action('wp_print_styles', 'pm_remove_all_styles', 100);
+ 		
+ 		
  		$template	=	dirname(__FILE__) . '/gallery.php';
  		$template 	= 	apply_filters('jaipho_template_file_filter', $template);
 		return $template;
 	}
 	
 	return $template;
+}
+
+function pm_remove_all_styles() {
+	global $wp_styles;
+		
+	$fixed	=	array();
+	foreach ($wp_styles->queue as $style)
+	{
+		if (strpos( $style, 'jaipho') !== false)
+			$fixed[] = $style;
+	}
+		
+	$wp_styles->queue = $fixed;
 }
 
 function jaipho_is_wp_gallery_call()
